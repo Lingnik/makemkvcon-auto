@@ -1,0 +1,7 @@
+SUBSYSTEM=="block", KERNEL=="sr0", ENV{GENERATED}="1", RUN+="/opt/plex/scripts/makemkvcon-auto.sh"
+
+# This line tests writing a message to /var/log/messages
+#SUBSYSTEM=="block", KERNEL=="sr0", ENV{GENERATED}="1", RUN+="/opt/plex/scripts/test-logger.sh"
+
+# This line tests beeping the system
+#SUBSYSTEM=="block", KERNEL=="sr0", ENV{GENERATED}="1", RUN+="/usr/bin/logger -s test"

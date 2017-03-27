@@ -1,1 +1,0 @@
-SUBSYSTEM=="block", KERNEL=="sr0", RUN+="/opt/plex/scripts/makemkvcon-auto.sh"

@@ -20,15 +20,19 @@ echo "Installing makemkvcon-auto scripts."
 
 SETTINGS_NAME=settings.sh
 echo "-Reading ${ORIGIN}/${SETTINGS_NAME}"
-. "${ORIGIN}"/${SETTINGS_NAME}
+. ${ORIGIN}/${SETTINGS_NAME}
 
 echo "-Creating the scripts folder symlink in: ${SCRIPTS_PATH}"
-cd ${ROOT_PATH}
-ln -fs "${ORIGIN}" ${SCRIPTS_PATH} 
+cmd="rm -rf ${SCRIPTS_PATH}" && echo "  $cmd" && $cmd
+cmd="ln -sf ${ORIGIN} ${SCRIPTS_PATH}" && echo "  $cmd" && $cmd
 
 echo "-Creating the udev symlink at: ${UDEV_PATH}/${UDEV_NAME}"
-cd ${UDEV_PATH}
-ln -fs "${ORIGIN}"/${UDEV_NAME} ${UDEV_NAME}
+cmd="rm -rf ${UDEV_PATH}/${UDEV_NAME}" && echo "  $cmd" && $cmd
+cmd="ln -sf ${ORIGIN}/${UDEV_NAME} ${UDEV_PATH}/${UDEV_NAME}" && echo "  $cmd" && $cmd
+
+echo "-Reloading udev rules."
+cmd="udevadm control --reload-rules" && echo "  $cmd" && $cmd
+cmd="udevadm trigger" && echo "  $cmd" && $cmd
 
 cd "$ORIGINAL_PWD"
 echo "Done."

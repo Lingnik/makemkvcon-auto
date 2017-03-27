@@ -14,4 +14,8 @@ export LOG_PATH=${TEMP_PATH}/makemkvcon-auto.log
 # The path to the udev rules.d folder
 export UDEV_PATH=/etc/udev/rules.d
 # The name of the udev file
-export UDEV_NAME=99-makemkvcon-auto.rule
+export UDEV_NAME=99-makemkvcon-auto.rules
+
+export SLACK_HOOK="https://hooks.slack.com/services/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"
+export LOG_ROOM=makemkv
+export ANNOUNCE_ROOM=makemkv
